@@ -1,0 +1,28 @@
+-- Gaia DR3 starter query: bright, well-measured stars with reliable distances.
+-- Run at: https://gea.esac.esa.int/archive/  (Search -> Advanced ADQL)
+-- Returns ~1.5M rows. Export as CSV, then run tools/build_stars.py on it.
+--
+-- Tuning the row count:
+--   phot_g_mean_mag < 12  -> ~1.5M rows   (good first run)
+--   phot_g_mean_mag < 13  -> ~4M rows
+--   phot_g_mean_mag < 14  -> ~11M rows    (needs the streaming loader, not this starter)
+--
+-- Cuts explained:
+--   parallax_over_error > 10 : parallax measured to better than 10%. Without this you
+--                              get negative/noise parallaxes that map to absurd distances.
+--   ruwe < 1.4               : standard astrometric quality flag. Higher values usually
+--                              mean an unresolved binary and an unreliable solution.
+
+SELECT TOP 2000000
+    source_id,
+    ra,
+    dec,
+    parallax,
+    phot_g_mean_mag,
+    bp_rp
+FROM gaiadr3.gaia_source
+WHERE parallax_over_error > 10
+  AND ruwe < 1.4
+  AND phot_g_mean_mag < 12
+  AND bp_rp IS NOT NULL
+ORDER BY phot_g_mean_mag ASC

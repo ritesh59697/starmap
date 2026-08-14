@@ -1,0 +1,9 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# Downloaded catalogs and generated binaries -- rebuild with tools/fetch_*.sh
+*.csv
+*.tsv
+public/data/*.bin

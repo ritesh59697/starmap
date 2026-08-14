@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starmap — Gaia DR3</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #05060a;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+      #status {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+        font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: #8b94a7;
+        pointer-events: none;
+        text-shadow: 0 1px 3px #000;
+      }
+      #views {
+        position: fixed;
+        left: 16px;
+        top: 16px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      #views button {
+        padding: 7px 12px;
+        font: 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: #cfd6e4;
+        background: rgba(12, 16, 26, 0.82);
+        border: 1px solid rgba(120, 160, 220, 0.25);
+        border-radius: 6px;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+      }
+      #views button:hover {
+        background: rgba(120, 160, 220, 0.22);
+      }
+      #info {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 300px;
+        padding: 16px 18px;
+        font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: #cfd6e4;
+        background: rgba(12, 16, 26, 0.82);
+        border: 1px solid rgba(120, 160, 220, 0.25);
+        border-radius: 10px;
+        backdrop-filter: blur(12px);
+      }
+      #info[hidden] {
+        display: none;
+      }
+      #info h2 {
+        margin: 0 0 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #8fc7ff;
+        word-break: break-all;
+      }
+      #info .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 3px 0;
+      }
+      #info .row span:first-child {
+        color: #7d879b;
+      }
+      #info button {
+        margin-top: 12px;
+        width: 100%;
+        padding: 6px;
+        font: inherit;
+        color: #cfd6e4;
+        background: rgba(120, 160, 220, 0.12);
+        border: 1px solid rgba(120, 160, 220, 0.25);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      #info button:hover {
+        background: rgba(120, 160, 220, 0.22);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="status">Loading…</div>
+    <div id="views">
+      <button id="view-cluster">Local Group</button>
+      <button id="view-galaxy">Galaxy</button>
+      <button id="view-sun">Sun's neighbourhood</button>
+      <button id="view-solar">Solar system</button>
+    </div>
+    <aside id="info" hidden></aside>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
