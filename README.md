@@ -300,3 +300,18 @@ million-point machinery would be pointless.
   distance. [Potree](https://github.com/potree/potree) is the reference implementation;
   [Gaia Sky](https://github.com/langurmonkey/gaiasky) shows how the scale tiers are handled.
 - **Named stars**: cross-match `source_id` against Hipparcos/Tycho for common names.
+
+## License
+
+Code is MIT — see [LICENSE](LICENSE).
+
+The astronomical data is not mine and is not covered by that license. It is downloaded
+at build time, not redistributed here, and each source has its own terms:
+
+- **Gaia DR3** — ESA/Gaia/DPAC. Free to use with acknowledgement; see the
+  [Gaia credit and citation instructions](https://gea.esac.esa.int/archive/documentation/credits.html).
+- **Gravitational Wave Galaxy Catalogue** — White, Daw & Dhillon (2011), via
+  [VizieR VII/267](https://cdsarc.cds.unistra.fr/viz-bin/cat/VII/267). Cite the paper if
+  you use it; VizieR/CDS terms apply.
+
+If you publish anything built on this, credit those sources rather than this repo.
